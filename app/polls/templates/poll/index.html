@@ -1,0 +1,17 @@
+{# base.htmlを継承 #}
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{# タイトルを変更 #}
+{% block title %}Home{% endblock %}
+
+{# メインコンテンツ #}
+{% block content %}
+    <p>Title</p>
+
+    <p>ユーザー名
+        <input type="text"></p>
+    <p>パスワード
+        <input type="password"></p>
+    <button>ログイン</button>
+{% endblock %}

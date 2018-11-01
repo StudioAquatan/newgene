@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang=ja>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {# タイトルブロック #}
+    <title>{% block title %}{% endblock %}</title>
+
+    {# style.cssを読み込む #}
+    <link rel="stylesheet" type="text/css" href="{% static 'poll/css/style.css' %}"/>
+
+</head>
+
+<body class="body" style="padding-top: 3.5rem">
+
+
+{# メインコンテンツ #}
+{% block content %}{% endblock %}
+
+<footer class="footer">
+    <div class="credits">
+        <span class="copyright">
+		    © <script>document.write(new Date().getFullYear().toString())</script> Studio Aquatan
+        </span>
+    </div>
+</footer>
+
+</body>
+
+</html>
