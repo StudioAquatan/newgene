@@ -7,9 +7,25 @@
 
 {# メインコンテンツ #}
 {% block content %}
-    <p>Title</p>
-    <p>メッセージ送信</p>
-
-    <p>投稿日時:</p>
-    <p>メッセージ</p>
+    <div>
+        <h1>Title</h1>
+    </div>
+    <div>
+        <a href="{%  url 'send_message' user_id %}">メッセージ送信</a>
+    </div>
+    {% if latest_message_list %}
+    <ul>
+        {% for message in latest_message_list %}
+        <li>
+            <div>
+                <p>送信者:</p>
+                <p>投稿日時:{{ message.reception_time }}</p>
+                <p>メッセージ:{{ message.message_text }}</p>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>メッセージがまだ届いていません。</p>
+    {% endif %}
 {% endblock %}
