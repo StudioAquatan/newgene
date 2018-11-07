@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import User, Mobile, MobileMessage, ServerMessage
+
+admin.site.register(User)
+admin.site.register(Mobile)
+admin.site.register(MobileMessage)
+admin.site.register(ServerMessage)
