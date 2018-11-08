@@ -1,12 +1,15 @@
 {# base.htmlを継承 #}
 {% extends 'base.html' %}
-{% load bootstrap4 %}
 
 {# タイトルを変更 #}
 {% block title %}Home{% endblock %}
 
 {# メインコンテンツ #}
 {% block content %}
+    {# yahoo地図apiの読み込み #}
+    <script type="text/javascript" charset="utf-8"
+            src="https://map.yahooapis.jp/js/V1/jsapi?appid=dj00aiZpPVdrdVRnTjRtOHZyRCZzPWNvbnN1bWVyc2VjcmV0Jng9OTY-"></script>
+
     <div>
         <h1>Title</h1>
     </div>
@@ -22,7 +25,14 @@
                         <p>投稿日時:{{ message.reception_time }}</p>
                         <p>メッセージ:{{ message.message_text }}</p>
                     </div>
-                    <div id="map" style="width:600px;height:400px;"></div>
+                    <div id="{{ message.id }}" style="width:600px;height:400px;"></div>
+                    <script>
+                        var map = 0, lat = 0, lng = 0;
+                        map = {{ message.id }};
+                        lat = {{ message.lat }};
+                        lng = {{ message.lng }};
+                        load_map(map, lat, lng);
+                    </script>
                 </li>
             {% endfor %}
         </ul>
