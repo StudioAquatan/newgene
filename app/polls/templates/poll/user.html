@@ -1,15 +1,42 @@
 {# base.htmlを継承 #}
 {% extends 'base.html' %}
-{% load bootstrap4 %}
 
 {# タイトルを変更 #}
 {% block title %}Home{% endblock %}
 
 {# メインコンテンツ #}
 {% block content %}
-    <p>Title</p>
-    <p>メッセージ送信</p>
+    {# yahoo地図apiの読み込み #}
+    <script type="text/javascript" charset="utf-8"
+            src="https://map.yahooapis.jp/js/V1/jsapi?appid=dj00aiZpPVdrdVRnTjRtOHZyRCZzPWNvbnN1bWVyc2VjcmV0Jng9OTY-"></script>
 
-    <p>投稿日時:</p>
-    <p>メッセージ</p>
+    <div>
+        <h1>Title</h1>
+    </div>
+    <div>
+        <a href="{% url 'send_message' user_id %}">メッセージ送信</a>
+    </div>
+    {% if latest_message_list %}
+        <ul>
+            {% for message in latest_message_list %}
+                <li>
+                    <div>
+                        <p>送信者:{{ message.mobile.mobile_name }}</p>
+                        <p>投稿日時:{{ message.reception_time }}</p>
+                        <p>メッセージ:{{ message.message_text }}</p>
+                    </div>
+                    <div id="{{ message.id }}" style="width:600px;height:400px;"></div>
+                    <script>
+                        var map = 0, lat = 0, lng = 0;
+                        map = {{ message.id }};
+                        lat = {{ message.lat }};
+                        lng = {{ message.lng }};
+                        load_map(map, lat, lng);
+                    </script>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>メッセージがまだ届いていません。</p>
+    {% endif %}
 {% endblock %}
