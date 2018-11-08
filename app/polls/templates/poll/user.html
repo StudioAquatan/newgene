@@ -18,7 +18,7 @@
             {% for message in latest_message_list %}
                 <li>
                     <div>
-                        <p>送信者:</p>
+                        <p>送信者:{{ message.mobile.mobile_name }}</p>
                         <p>投稿日時:{{ message.reception_time }}</p>
                         <p>メッセージ:{{ message.message_text }}</p>
                     </div>

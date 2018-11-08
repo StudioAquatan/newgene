@@ -10,9 +10,8 @@ def index(request):
 def user(request, user_id):
     latest_message_list = MobileMessage.objects.order_by('-reception_time')[:5]
     message = MobileMessage
-    mobile = Mobile
-    context = {'latest_message_list': latest_message_list, 'mobile': mobile,
-               'message': message, 'user_id':user_id}
+    context = {'latest_message_list': latest_message_list,
+               'message': message, 'user_id': user_id}
     return render(request, 'poll/user.html', context)
 
 

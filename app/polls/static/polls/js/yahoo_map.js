@@ -1,4 +1,4 @@
-window.onload = function() {
+window.onload = function () {
     //地図を初期化
     var map = new Y.Map("map");
 
@@ -7,5 +7,5 @@ window.onload = function() {
     map.addControl(new Y.ZoomControl());
 
     //地図を表示
-    map.drawMap(new Y.LatLng(35.680840,139.767009), 16 ,Y.LayerSetId.NORMAL);
+    map.drawMap(new Y.LatLng(35.680840, 139.767009), 16, Y.LayerSetId.NORMAL);
 }
