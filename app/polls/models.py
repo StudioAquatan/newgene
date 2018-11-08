@@ -35,9 +35,9 @@ class MobileMessage(models.Model):
     message_text = models.CharField(max_length=50)
     # 位置情報(-1のときは位置情報なし)
     # 位置情報　緯度
-    lat = models.IntegerField(default=-1, blank=True, null=True)
+    lat = models.FloatField(default=-1, blank=True, null=True)
     # 位置情報　経度
-    lng = models.IntegerField(default=-1, blank=True, null=True)
+    lng = models.FloatField(default=-1, blank=True, null=True)
 
 
 class ServerMessage(models.Model):
@@ -52,6 +52,6 @@ class ServerMessage(models.Model):
     message_text = models.CharField(max_length=50)
     # 位置情報(-1のときは位置情報なし)
     # 位置情報　緯度
-    lat = models.IntegerField(default=-1, blank=True, null=True)
+    lat = models.FloatField(default=-1, blank=True, null=True)
     # 位置情報　経度
-    lng = models.IntegerField(default=-1, blank=True, null=True)
+    lng = models.FloatField(default=-1, blank=True, null=True)
