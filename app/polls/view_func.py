@@ -3,9 +3,10 @@ from .models import User, Mobile, MobileMessage
 
 def login(login_username, login_password):
     user_id = -1
-    user = User.objects.get(username=login_username)
-    if user.password == login_password:
-        user_id = user.id
+    if User.objects.filter(username=login_username).exists():
+        user = User.objects.get(username=login_username)
+        if user.password == login_password:
+            user_id = user.id
     return user_id
 
 
