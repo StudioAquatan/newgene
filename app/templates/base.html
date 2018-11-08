@@ -7,6 +7,10 @@
     {# タイトルブロック #}
     <title>{% block title %}{% endblock %}</title>
 
+    {# ヤフーマップAPIの利用の準備#}
+    <script type="text/javascript" charset="utf-8" src="https://map.yahooapis.jp/js/V1/jsapi?appid=dj00aiZpPVdrdVRnTjRtOHZyRCZzPWNvbnN1bWVyc2VjcmV0Jng9OTY-"></script>
+    <script type="text/javascript" src={% static 'polls/js/yahoo_map.js' %}></script>
+
     {# style.cssを読み込む #}
     <link rel="stylesheet" type="text/css" href="{% static 'poll/css/style.css' %}"/>
 
