@@ -1,30 +1,38 @@
 from django.shortcuts import render
 
-from .models import User, Mobile, MobileMessage
+from .view_func import login, get_user_context
 
 
 def index(request):
+    """
+    ユーザー名とパスワードが正しければログイン
+    正しくなかったり、入力漏れがあればエラーを表示
+    """
+    if request.method == 'POST':
+        if request.POST.get('username'):
+            username = request.POST.get('username')
+            if request.POST.get('password'):
+                password = request.POST.get('password')
+                if 'btn_login' in request.POST:
+                    user_id = login(username, password)
+                    if user_id == -1:
+                        return render(request, 'poll/index.html',
+                                      {'error_message': 'ユーザー名またはパスワードが正しくありません'})
+                    else:
+                        context = get_user_context(user_id)
+                        return render(request, 'poll/user.html', context)
+            else:
+                return render(request, 'poll/index.html',
+                              {'error_message': 'パスワードが入力されていません'})
+        else:
+            return render(request, 'poll/index.html',
+                          {'error_message': 'ユーザー名が入力されていません'})
+
     return render(request, 'poll/index.html')
 
 
 def user(request, user_id):
-    login_user = User.objects.get(id=user_id)
-    users_mobile = Mobile.objects.filter(user=login_user)
-    message_list = MobileMessage.objects.order_by('reception_time')
-    i = 0
-    latest_message_list=[]
-    for temp_message in message_list:
-        for temp_mobile in users_mobile:
-            if temp_message.mobile == temp_mobile:
-                latest_message_list.append(temp_message)
-                i = i + 1
-                break
-        if i > 5:
-            break
-
-    message = MobileMessage
-    context = {'latest_message_list': latest_message_list,
-               'message': message, 'user_id': user_id}
+    context = get_user_context(user_id)
     return render(request, 'poll/user.html', context)
 
 
