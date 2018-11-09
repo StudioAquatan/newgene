@@ -10,10 +10,17 @@
     <div class="jumbotron jumbotron-fluid">
 
 
-        <div class="d-flex flex-column align-items-center">
+        <div class="top-group d-flex flex-column align-items-center">
             <div class="p-2">
                 <div class="container-fluid jumbotron-container">
-                    <div class="logo"></div>
+                    <div class="row align-items-center">
+                        <div class="col-sm">
+                            <img class="top-image" src="../../static/polls/image/logo_acccent_color.png" style="width: 200px;height: 100px">
+                        </div>
+                        <div class="col-sm">
+                            <img class="top-image" src="../../static/polls/image/icon.png" style="width: 200px;height: 200px">
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="p-2">
@@ -23,8 +30,14 @@
                         <input type="text" name="username"></p>
                     <p>パスワード
                         <input type="password" name="password"></p>
-                    <button class="btn btn-outline-primary" name="btn_sign_up">新規登録</button>
-                    <button class="btn btn-outline-primary" name="btn_login">ログイン</button>
+                    <button class="btn btn-outline-primary" name="btn_sign_up">
+                        <i class="fa fa-user-edit" aria-hidden="true"></i>
+                        新規登録
+                    </button>
+                    <button class="btn btn-outline-primary" name="btn_login">
+                        <i class="fa fa-key" aria-hidden="true"></i>
+                        ログイン
+                    </button>
                     {% if error_message %}
                         <p style="color: red;">
                             <strong>{{ error_message }}</strong>
