@@ -7,6 +7,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('userguide/', views.userguide, name='userguide'),
     path('<int:user_id>/user/', views.user, name='user'),
+    path('<int:user_id>/send_message_box/', views.send_message_box, name='send_message_box'),
     path('new_user/', views.new_user, name='new_user'),
     path('<int:user_id>/send_message/', views.send_message, name='send_message'),
     path('tutorial/', views.tutorial, name='tutorial'),

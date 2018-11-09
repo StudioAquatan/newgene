@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .view_func import login, get_user_context, get_send_message_context
+from .view_func import login, get_user_context, get_send_message_context, get_send_message_box_context
 from .models import ServerMessage, Mobile, User, MobileMessage
 
 
@@ -41,6 +41,11 @@ def userguide(request):
 def user(request, user_id):
     context = get_user_context(user_id)
     return render(request, 'poll/user.html', context)
+
+
+def send_message_box(request, user_id):
+    context = get_send_message_box_context(user_id)
+    return render(request, 'poll/send_message_box.html', context)
 
 
 def new_user(request):
