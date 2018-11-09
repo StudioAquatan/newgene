@@ -10,6 +10,10 @@
     {# ヤフーマップAPIの利用の準備#}
     <script type="text/javascript" src={% static 'polls/js/yahoo_map.js' %}></script>
     <script type="text/javascript" src="{% static 'polls/js/bootstrap.min.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+
 
     {# style.cssを読み込む #}
     <link rel="stylesheet" href="{% static 'polls/css/bootstrap.min.css' %}" type="text/css">
@@ -22,27 +26,17 @@
 {% block navi %}
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <a class="navbar-brand" href="{% url 'index' %}">Hoge</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'userguide' %}">操作方法</a>
-                </li>
-            </ul>
-        </div>
+        <ul class="nav navbar-nav flex-row float-left">
+            <li class="nav-item"><a class="nav-link" href="{% url 'userguide' %}">操作方法</a></li>
+        </ul>
     </nav>
 {% endblock %}
 
-<div role="main" class="main-container">
 
-{# メインコンテンツ #}
-{% block content %}{% endblock %}
+    {# メインコンテンツ #}
+    {% block content %}{% endblock %}
 
-</div>
 
 <div class="footer">
     <div class="credits">
