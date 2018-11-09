@@ -54,7 +54,14 @@ body {
     height: 10rem;
 }
 
-.logo {
+.top-logo {
+    width: 250px;
+    height: 65px;
+}
+
+.top-image {
+    width: 200px;
+    height: 200px;
 }
 
 .button-group {
@@ -181,6 +188,11 @@ body {
         width: 600px;
     }
 
+    .top-logo {
+        width: 400px;
+        height: 104px;
+    }
+
     .table-responsive {
         width: 90%;
     }
@@ -197,5 +209,10 @@ body {
 @media (min-width: 1024px) {
     .btn-send {
         font-size: 1.5rem;
+    }
+
+    .top-logo {
+        width: 500px;
+        height: 130px;
     }
 }
