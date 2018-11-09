@@ -41,7 +41,8 @@ def new_user(request):
 
 
 def send_message(request, user_id):
-    return render(request, 'poll/send_message.html')
+    context = get_user_context(user_id)
+    return render(request, 'poll/send_message.html', context)
 
 
 def tutorial(request):
