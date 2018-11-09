@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 class User(models.Model):
@@ -30,7 +31,7 @@ class MobileMessage(models.Model):
     # 携帯端末ID
     mobile = models.ForeignKey(Mobile, on_delete=models.CASCADE)
     # 受信時刻
-    reception_time = models.DateTimeField('message received')
+    reception_time = models.DateTimeField(default=timezone.now)
     # メッセージ本文
     message_text = models.CharField(max_length=50)
     # 位置情報(-1のときは位置情報なし)
@@ -47,7 +48,7 @@ class ServerMessage(models.Model):
     # 携帯端末ID
     mobile = models.ForeignKey(Mobile, on_delete=models.CASCADE)
     # 送信時刻
-    send_time = models.DateTimeField('message sended')
+    send_time = models.DateTimeField(default=timezone.now)
     # メッセージ本文
     message_text = models.CharField(max_length=50)
     # 位置情報(-1のときは位置情報なし)
