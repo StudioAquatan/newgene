@@ -13,7 +13,7 @@ def login(login_username, login_password):
 def get_user_context(user_id):
     login_user = User.objects.get(id=user_id)
     users_mobile = Mobile.objects.filter(user=login_user)
-    message_list = MobileMessage.objects.order_by('reception_time')
+    message_list = MobileMessage.objects.order_by('-reception_time')
     i = 0
     latest_message_list = []
     for temp_message in message_list:
@@ -32,7 +32,7 @@ def get_user_context(user_id):
 def get_send_message_box_context(user_id):
     login_user = User.objects.get(id=user_id)
     users_message = ServerMessage.objects.filter(user=login_user)
-    latest_message_list = users_message.order_by('send_time')
+    latest_message_list = users_message.order_by('-send_time')
 
     context = {'latest_message_list': latest_message_list, 'user_id': user_id}
     return context
