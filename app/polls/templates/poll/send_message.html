@@ -9,6 +9,12 @@
 {% block content %}
     <h1>Title</h1>
 
+    {% if error_message %}
+        <h2 style="color: red;">
+            <strong>{{ error_message }}</strong>
+        </h2>
+    {% endif %}
+
     <form action="{% url 'send_message' user_id %}" method="post">
         {% csrf_token %}
         <div>

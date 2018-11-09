@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
-from .view_func import login, get_user_context
+from .view_func import login, get_user_context, get_send_message_context
+from .models import ServerMessage, Mobile, User
 
 
 def index(request):
@@ -41,7 +42,21 @@ def new_user(request):
 
 
 def send_message(request, user_id):
-    context = get_user_context(user_id)
+    error_message = '\0'
+    if request.method == 'POST':
+        if request.POST.get('user_message'):
+            user_message = request.POST.get('user_message')
+            login_user = User.objects.get(id=user_id)
+            mobile_list = Mobile.objects.filter(user_id=login_user)
+            for temp_mobile in mobile_list:
+                ServerMessage.objects.create(mobile=temp_mobile,
+                                             message_text=user_message)
+        else:
+            error_message = 'メッセージを入力してください'
+
+    context = get_send_message_context(user_id)
+    if error_message != '\0':
+        context.update(error_message=error_message)
     return render(request, 'poll/send_message.html', context)
 
 

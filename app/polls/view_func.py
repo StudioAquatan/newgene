@@ -29,3 +29,9 @@ def get_user_context(user_id):
     context = {'latest_message_list': latest_message_list,
                'message': message, 'user_id': user_id}
     return context
+
+
+def get_send_message_context(user_id):
+    user = User.objects.get(id=user_id)
+    context = {'user_id': user_id}
+    return context
