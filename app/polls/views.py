@@ -85,5 +85,9 @@ def m5stack_read(request, mobile_key):
 
 def m5stack_send(request, send_mobile_key, send_msg, send_lat, send_lng):
     sened_mobile = Mobile.objects.get(mobile_key=send_mobile_key)
+    if send_msg == 1:
+        send_msg = '大丈夫だよ'
+    elif send_msg == 2:
+        send_msg = '大変！'
     MobileMessage.objects.create(mobile=sened_mobile, message_text=send_msg, lat=send_lat, lng=send_lng)
     return render(request, 'poll/m5stack_send.html')
