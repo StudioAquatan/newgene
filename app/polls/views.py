@@ -70,10 +70,12 @@ def tutorial(request):
     return render(request, 'poll/tutorial.html')
 
 
-def m5stack_read(request, mobile_id):
-    receive_mobile = Mobile.objects.get(id=mobile_id)
-    msg = ServerMessage.objects.filter(mobile=receive_mobile).latest('send_time').message_text
-    return render(request, 'poll/m5stack_read.html', {'msg': msg})
+def m5stack_read(request, mobile_key):
+    receive_mobile = Mobile.objects.get(mobile_key=mobile_key)
+    server_msg = ServerMessage.objects.filter(mobile=receive_mobile).latest('send_time')
+    msg = server_msg.message_text
+    send_user = server_msg.user.username
+    return render(request, 'poll/m5stack_read.html', {'msg': msg, 'send_user': send_user})
 
 
 def m5stack_send(request, send_mobile_key, send_msg, send_lat, send_lng):
