@@ -14,17 +14,39 @@ html {
 }
 
 body {
-    margin-bottom: 80px;
+    margin: 0;
+    padding: 0;
+    /*margin-bottom: 80px;*/
 }
 
 .navbar{
     background-color: var(--base-color);
 }
 
+.jumbotron {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 85vh;
+    min-height: 450px;
+    background: transparent !important;
+    text-align: center;
+}
+
+.jumbotron-container {
+    position: center;
+}
+
+.map-group {
+    margin-top: 30px;
+    margin-bottom: 100px;
+}
+
 .map-display {
     height: 800px;
     width: 1000px;
-    margin-bottom: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .main-container {
@@ -39,6 +61,7 @@ body {
     background-color: var(--base-color);
     padding: 1rem;
     text-align: right;
+    margin-top: 20px;
 }
 
 @media (min-width: 300px) {
@@ -61,6 +84,3 @@ body {
         width: 600px;
     }
 }
-
-
-

@@ -22,12 +22,15 @@ def index(request):
                     else:
                         context = get_user_context(user_id)
                         return render(request, 'poll/user.html', context)
+                elif 'btn_sign_up' in request.POST:
+                    return render(request, 'poll/new_user.html')
             else:
                 return render(request, 'poll/index.html',
                               {'error_message': 'パスワードが入力されていません'})
         else:
             return render(request, 'poll/index.html',
                           {'error_message': 'ユーザー名が入力されていません'})
+
 
     return render(request, 'poll/index.html')
 
