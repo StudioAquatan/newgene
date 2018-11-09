@@ -10,11 +10,11 @@ def index(request):
     正しくなかったり、入力漏れがあればエラーを表示
     """
     if request.method == 'POST':
-        if request.POST.get('username'):
-            username = request.POST.get('username')
-            if request.POST.get('password'):
-                password = request.POST.get('password')
-                if 'btn_login' in request.POST:
+        if 'btn_login' in request.POST:
+            if request.POST.get('username'):
+                username = request.POST.get('username')
+                if request.POST.get('password'):
+                    password = request.POST.get('password')
                     user_id = login(username, password)
                     if user_id == -1:
                         return render(request, 'poll/index.html',
@@ -22,14 +22,13 @@ def index(request):
                     else:
                         context = get_user_context(user_id)
                         return render(request, 'poll/user.html', context)
-                elif 'btn_sign_up' in request.POST:
-                    return render(request, 'poll/new_user.html')
+                else:
+                    return render(request, 'poll/index.html',
+                                  {'error_message': 'パスワードが入力されていません'})
             else:
-                return render(request, 'poll/index.html',
-                              {'error_message': 'パスワードが入力されていません'})
-        else:
-            return render(request, 'poll/index.html',
-                          {'error_message': 'ユーザー名が入力されていません'})
+                return render(request, 'poll/index.html', {'error_message': 'ユーザー名が入力されていません'})
+        elif 'btn_sign_up' in request.POST:
+            return render(request, 'poll/new_user.html')
 
     return render(request, 'poll/index.html')
 
@@ -49,6 +48,28 @@ def send_message_box(request, user_id):
 
 
 def new_user(request):
+    if request.method == 'POST':
+        if 'btn_sign_up' in request.POST:
+            if request.POST.get('username'):
+                username = request.POST.get('username')
+                if request.POST.get('password'):
+                    password = request.POST.get('password')
+                    if request.POST.get('mobile_key'):
+                        mobile_key = request.POST.get('mobile_key')
+                        if request.POST.get('mobile_name'):
+                            mobile_name = request.POST.get('mobile_name')
+                            registered_user = User.objects.create(username=username, password=password)
+                            Mobile.objects.create(user=registered_user, mobile_key=mobile_key,
+                                                  mobile_name=mobile_name)
+                            return render(request, 'poll/user.html', {'user_id': registered_user.id})
+                        else:
+                            return render(request, 'poll/new_user.html', {'error_message': 'みつける君を持っている人が入力されていません'})
+                    else:
+                        return render(request, 'poll/new_user.html', {'error_message': 'みつける君のキーが入力されていません'})
+                else:
+                    return render(request, 'poll/new_user.html', {'error_message': 'パスワードが入力されていません'})
+            else:
+                return render(request, 'poll/new_user.html', {'error_message': 'ユーザー名が入力されていません'})
     return render(request, 'poll/new_user.html')
 
 

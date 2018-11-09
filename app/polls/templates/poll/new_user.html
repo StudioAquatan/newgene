@@ -9,10 +9,9 @@
 {% block content %}
     <div class="jumbotron jumbotron-fluid">
 
-
         <div class="top-group d-flex flex-column align-items-center">
             <div class="p-2">
-                <form action="{% url 'index' %}" method="post">
+                <form action="{% url 'new_user' %}" method="post">
                     {% csrf_token %}
                     <p>以下の項目を入力してください。</p>
                     <p>ユーザー名
@@ -27,12 +26,13 @@
                         <i class="fa fa-user-edit" aria-hidden="true"></i>
                         登録
                     </button>
-                    {% if error_message %}
-                        <p style="color: red;">
-                            <strong>{{ error_message }}</strong>
-                        </p>
-                    {% endif %}
                 </form>
+
+                {% if error_message %}
+                    <p style="color: red;">
+                        <strong>{{ error_message }}</strong>
+                    </p>
+                {% endif %}
             </div>
         </div>
     </div>
