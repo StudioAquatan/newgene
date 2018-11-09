@@ -19,10 +19,11 @@
             <a class="btn btn-outline-primary btn-lg btn-send" href="{% url 'user' user_id %}">受信一覧</a>
         </div>
         <div class="col-sm">
-            <a class="btn btn-outline-primary btn-lg btn-send" href="{% url 'send_message' user_id %}">送信一覧</a>
+            <a class="btn btn-outline-primary btn-lg btn-send" href="{% url 'send_message_box' user_id %}">送信一覧</a>
         </div>
         <div class="col-sm">
-            <a class="btn btn-outline-primary btn-lg btn-send disabled" href="{% url 'send_message' user_id %}">メッセージ作成</a>
+            <a class="btn btn-outline-primary btn-lg btn-send disabled"
+               href="{% url 'send_message' user_id %}">メッセージ作成</a>
         </div>
     </div>
 
@@ -30,7 +31,8 @@
         <form action="{% url 'send_message' user_id %}" method="post" style="text-align: center!important;">
             {% csrf_token %}
             <div>
-                <textarea class="msg-textarea" id="msg" name="user_message" maxlength="50" placeholder="ここにメッセージを入力してください。"></textarea>
+                <textarea class="msg-textarea" id="msg" name="user_message" maxlength="50"
+                          placeholder="ここにメッセージを入力してください。"></textarea>
             </div>
             <p>*メッセージは50文字まで送信できます。</p>
             <button class="btn btn-outline-primary" name="btn_send_msg">メッセージを送信</button>

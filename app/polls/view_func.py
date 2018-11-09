@@ -1,4 +1,4 @@
-from .models import User, Mobile, MobileMessage
+from .models import User, Mobile, MobileMessage, ServerMessage
 
 
 def login(login_username, login_password):
@@ -25,9 +25,16 @@ def get_user_context(user_id):
         if i > 5:
             break
 
-    message = MobileMessage
-    context = {'latest_message_list': latest_message_list,
-               'message': message, 'user_id': user_id}
+    context = {'latest_message_list': latest_message_list, 'user_id': user_id}
+    return context
+
+
+def get_send_message_box_context(user_id):
+    login_user = User.objects.get(id=user_id)
+    users_message = ServerMessage.objects.filter(user=login_user)
+    latest_message_list = users_message.order_by('send_time')
+
+    context = {'latest_message_list': latest_message_list, 'user_id': user_id}
     return context
 
 
