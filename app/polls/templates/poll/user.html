@@ -10,7 +10,17 @@
     <script type="text/javascript" charset="utf-8"
             src="https://map.yahooapis.jp/js/V1/jsapi?appid=dj00aiZpPVdrdVRnTjRtOHZyRCZzPWNvbnN1bWVyc2VjcmV0Jng9OTY-"></script>
 
-    <a class="btn btn-outline-primary btn-lg btn-send" href="{% url 'send_message' user_id %}">メッセージ送信</a>
+    <div class="row button-group">
+        <div class="col-sm">
+            <a class="btn btn-outline-primary btn-lg btn-send disabled" href="{% url 'send_message' user_id %}">受信一覧</a>
+        </div>
+        <div class="col-sm">
+            <a class="btn btn-outline-primary btn-lg btn-send" href="{% url 'send_message' user_id %}">送信一覧</a>
+        </div>
+        <div class="col-sm">
+            <a class="btn btn-outline-primary btn-lg btn-send" href="{% url 'send_message' user_id %}">メッセージ作成</a>
+        </div>
+    </div>
 
     {% if latest_message_list %}
         <div class="map-group">
