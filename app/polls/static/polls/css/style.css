@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /* color */
-:root{
+:root {
     --base-color: #00505d;
     --accent-color: #35a9b2;
     --dark-color: #424040;
@@ -9,17 +9,16 @@
 }
 
 html {
-  min-height: 100%;
-  position: relative;
+    min-height: 100%;
+    position: relative;
 }
 
 body {
     margin: 0;
     padding: 0;
-    /*margin-bottom: 80px;*/
 }
 
-.navbar{
+.navbar {
     background-color: var(--base-color);
 }
 
@@ -37,6 +36,38 @@ body {
     position: center;
 }
 
+.container-sender-info {
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    padding-right: 20px;
+    margin-right: 20px;
+    box-shadow: 10px 10px 15px -10px;
+    outline: solid 1px gray;
+}
+
+.btn-outline-primary {
+    margin: 0.5rem 1rem 1rem 1rem;
+}
+
+.btn-send {
+    margin-top: 1rem;
+    display: block;
+!important;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    margin-right: 20%;
+    margin-left: 20%;
+    font-size: 3rem;
+}
+
+.th-sender-info {
+    width: 30%;
+}
+
+.td-sender-info {
+    width: 70%;
+}
+
 .map-group {
     margin-top: 30px;
     margin-bottom: 100px;
@@ -46,11 +77,17 @@ body {
     height: 800px;
     width: 1000px;
     margin-top: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
 }
 
 .main-container {
     height: inherit;
+}
+
+.table-responsive {
+    padding-top: 1rem;
+    padding-left: 1rem;
 }
 
 .footer {
@@ -66,6 +103,21 @@ body {
 
 @media (min-width: 300px) {
     .map-display {
+        height: 230px;
+        width: 230px;
+    }
+
+    .btn-send {
+        font-size: 1rem;
+    }
+
+    .table-responsive {
+        width: 100%;
+    }
+}
+
+@media (min-width: 375px) {
+    .map-display {
         height: 250px;
         width: 250px;
     }
@@ -73,14 +125,37 @@ body {
 
 @media (min-width: 425px) {
     .map-display {
-        height: 350px;
-        width: 350px;
+        height: 300px;
+        width: 300px;
     }
 }
 
-@media(min-width: 735px)  {
+@media (min-width: 768px) {
     .map-display {
         height: 400px;
         width: 600px;
+    }
+
+    .btn-send {
+        margin-right: 35%;
+        margin-left: 35%;
+    }
+
+    .table-responsive {
+        width: 90%;
+    }
+
+    .th-sender-info {
+        width: 20%;
+    }
+
+    .td-sender-info {
+        width: 80%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .btn-send {
+        font-size: 1.5rem;
     }
 }
