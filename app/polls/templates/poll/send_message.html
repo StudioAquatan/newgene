@@ -3,16 +3,20 @@
 {% load bootstrap4 %}
 
 {# タイトルを変更 #}
-{% block title %}Home{% endblock %}
+{% block title %}メッセージを送信{% endblock %}
 
 {# メインコンテンツ #}
 {% block content %}
-    <p>Title</p>
+    <h1>Title</h1>
 
-    <p>ユーザー名
-        <input type="text"></p>
-    <p>パスワード
-        <input type="password"></p>
-    <a href="new_user.html">新規登録</a>
-    <button>ログイン</button>
+    <form action="{% url 'send_message' user_id %}" method="post">
+        {% csrf_token %}
+        <div>
+            <label for="msg">Message:</label>
+            <textarea id="msg" name="user_message"></textarea>
+        </div>
+        <button name="btn_login">メッセージを送信</button>
+    </form>
+
+    <a href="{% url 'user' user_id %}">ユーザーページへ戻る</a>
 {% endblock %}
