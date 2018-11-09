@@ -45,6 +45,8 @@ class ServerMessage(models.Model):
     """
     サーバから携帯端末へのメッセージのモデル
     """
+    # ユーザーID
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     # 携帯端末ID
     mobile = models.ForeignKey(Mobile, on_delete=models.CASCADE)
     # 送信時刻
