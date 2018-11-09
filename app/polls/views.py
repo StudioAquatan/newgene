@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from .view_func import login, get_user_context, get_send_message_context
-from .models import ServerMessage, Mobile, User
+from .models import ServerMessage, Mobile, User, MobileMessage
 
 
 def index(request):
@@ -31,7 +31,6 @@ def index(request):
             return render(request, 'poll/index.html',
                           {'error_message': 'ユーザー名が入力されていません'})
 
-
     return render(request, 'poll/index.html')
 
 
@@ -56,7 +55,7 @@ def send_message(request, user_id):
             login_user = User.objects.get(id=user_id)
             mobile_list = Mobile.objects.filter(user_id=login_user)
             for temp_mobile in mobile_list:
-                ServerMessage.objects.create(mobile=temp_mobile,
+                ServerMessage.objects.create(user=login_user, mobile=temp_mobile,
                                              message_text=user_message)
         else:
             error_message = 'メッセージを入力してください'
@@ -69,3 +68,17 @@ def send_message(request, user_id):
 
 def tutorial(request):
     return render(request, 'poll/tutorial.html')
+
+
+def m5stack_read(request, mobile_key):
+    receive_mobile = Mobile.objects.get(mobile_key=mobile_key)
+    server_msg = ServerMessage.objects.filter(mobile=receive_mobile).latest('send_time')
+    msg = server_msg.message_text
+    send_user = server_msg.user.username
+    return render(request, 'poll/m5stack_read.html', {'msg': msg, 'send_user': send_user})
+
+
+def m5stack_send(request, send_mobile_key, send_msg, send_lat, send_lng):
+    sened_mobile = Mobile.objects.get(mobile_key=send_mobile_key)
+    MobileMessage.objects.create(mobile=sened_mobile, message_text=send_msg, lat=send_lat, lng=send_lng)
+    return render(request, 'poll/m5stack_send.html')
