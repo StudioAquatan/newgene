@@ -3,21 +3,18 @@
 <html lang=ja>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {# タイトルブロック #}
     <title>{% block title %}{% endblock %}</title>
 
     {# ヤフーマップAPIの利用の準備#}
     <script type="text/javascript" src={% static 'polls/js/yahoo_map.js' %}></script>
 
-
     {# style.cssを読み込む #}
-    <link rel="stylesheet" type="text/css" href="{% static 'poll/css/style.css' %}"/>
-
+    <link rel="stylesheet" href="{% static 'polls/css/bootstrap.min.css' %}" type="text/css">
 </head>
 
 <body class="body" style="padding-top: 3.5rem">
-
 
 {# メインコンテンツ #}
 {% block content %}{% endblock %}
@@ -29,6 +26,9 @@
         </span>
     </div>
 </footer>
+
+<script type="text/javascript" src="{% static 'polls/js/bootstrap.min.js' %}">
+</script>
 
 </body>
 
