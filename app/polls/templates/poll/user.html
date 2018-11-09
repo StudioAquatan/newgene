@@ -17,25 +17,27 @@
         <a href="{% url 'send_message' user_id %}">メッセージ送信</a>
     </div>
     {% if latest_message_list %}
-        <ul>
-            {% for message in latest_message_list %}
-                <li>
-                    <div>
-                        <p>送信者:{{ message.mobile.mobile_name }}</p>
-                        <p>投稿日時:{{ message.reception_time }}</p>
-                        <p>メッセージ:{{ message.message_text }}</p>
-                    </div>
-                    <div id="{{ message.id }}" style="width:600px;height:400px;"></div>
-                    <script>
-                        var map = 0, lat = 0, lng = 0;
-                        map = {{ message.id }};
-                        lat = {{ message.lat }};
-                        lng = {{ message.lng }};
-                        load_map(map, lat, lng);
-                    </script>
-                </li>
-            {% endfor %}
-        </ul>
+        <div class="map-group">
+            <ul>
+                {% for message in latest_message_list %}
+                    <li>
+                        <div>
+                            <p>送信者:{{ message.mobile.mobile_name }}</p>
+                            <p>投稿日時:{{ message.reception_time }}</p>
+                            <p>メッセージ:{{ message.message_text }}</p>
+                        </div>
+                        <div class="map-display" id="{{ message.id }}"></div>
+                        <script>
+                            var map = 0, lat = 0, lng = 0;
+                            map = {{ message.id }};
+                            lat = {{ message.lat }};
+                            lng = {{ message.lng }};
+                            load_map(map, lat, lng);
+                        </script>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     {% else %}
         <p>メッセージがまだ届いていません。</p>
     {% endif %}
