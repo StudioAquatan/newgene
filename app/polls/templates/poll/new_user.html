@@ -7,11 +7,45 @@
 
 {# メインコンテンツ #}
 {% block content %}
-    <p>Title</p>
+    <div class="jumbotron jumbotron-fluid">
 
-    <p>ユーザー名
-        <input type="text"></p>
-    <p>パスワード
-        <input type="password"></p>
-    <button>ログイン</button>
+
+        <div class="top-group d-flex flex-column align-items-center">
+            <div class="p-2">
+                <div class="container-fluid jumbotron-container">
+                    <div class="row align-items-center">
+                        <div class="col-sm">
+                            <img class="top-logo" src="../../static/polls/image/logo_acccent_color.png">
+                        </div>
+                        <div class="col-sm">
+                            <img class="top-image" src="../../static/polls/image/icon.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-2">
+                <form action="{% url 'index' %}" method="post">
+                    {% csrf_token %}
+                    <p>ユーザー名
+                        <input type="text" name="username"></p>
+                    <p>パスワード
+                        <input type="password" name="password"></p>
+                    <button class="btn btn-outline-primary" name="btn_sign_up">
+                        <i class="fa fa-user-edit" aria-hidden="true"></i>
+                        新規登録
+                    </button>
+                    <button class="btn btn-outline-primary" name="btn_login">
+                        <i class="fa fa-key" aria-hidden="true"></i>
+                        ログイン
+                    </button>
+                    {% if error_message %}
+                        <p style="color: red;">
+                            <strong>{{ error_message }}</strong>
+                        </p>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
