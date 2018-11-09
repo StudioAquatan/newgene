@@ -19,7 +19,7 @@
         {% csrf_token %}
         <div>
             <label for="msg">Message:</label>
-            <textarea id="msg" name="user_message"></textarea>
+            <textarea id="msg" name="user_message" maxlength="50"></textarea>
         </div>
         <button name="btn_login">メッセージを送信</button>
     </form>
