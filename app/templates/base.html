@@ -9,27 +9,48 @@
 
     {# ヤフーマップAPIの利用の準備#}
     <script type="text/javascript" src={% static 'polls/js/yahoo_map.js' %}></script>
+    <script type="text/javascript" src="{% static 'polls/js/bootstrap.min.js' %}"></script>
 
     {# style.cssを読み込む #}
     <link rel="stylesheet" href="{% static 'polls/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'polls/css/style.css' %}" type="text/css">
 </head>
 
 <body class="body" style="padding-top: 3.5rem">
 
+{# ナビゲーションバー #}
+{% block navi %}
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <a class="navbar-brand" href="{% url 'index' %}">Hoge</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'userguide' %}">操作方法</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+{% endblock %}
+
+<div role="main" class="main-container">
+
 {# メインコンテンツ #}
 {% block content %}{% endblock %}
 
-<footer class="footer">
+</div>
+
+<div class="footer">
     <div class="credits">
-        <span class="copyright">
-		    © <script>document.write(new Date().getFullYear().toString())</script> Studio Aquatan
+        <span class="copyright text-white-50">
+		    © <script>document.write(new Date().getFullYear().toString())</script> Studio Aquatan newgene
         </span>
     </div>
-</footer>
-
-<script type="text/javascript" src="{% static 'polls/js/bootstrap.min.js' %}">
-</script>
+</div>
 
 </body>
-
 </html>

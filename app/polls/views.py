@@ -31,6 +31,10 @@ def index(request):
     return render(request, 'poll/index.html')
 
 
+def userguide(request):
+    return render(request, 'poll/userguide.html')
+
+
 def user(request, user_id):
     context = get_user_context(user_id)
     return render(request, 'poll/user.html', context)
