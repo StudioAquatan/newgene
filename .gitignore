@@ -7,3 +7,8 @@ __pycache__/
 *.pyc
 
 .DS_Store
+
+.vscode/
+kithack2018_newgene_m5stack2/private.h
+
+app/app/settings.py

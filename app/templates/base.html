@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang=ja>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {# タイトルブロック #}
+    <title>{% block title %}{% endblock %}</title>
+
+    {# ヤフーマップAPIの利用の準備#}
+    <script type="text/javascript" src={% static 'polls/js/yahoo_map.js' %}></script>
+    <script type="text/javascript" src="{% static 'polls/js/bootstrap.min.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+
+
+    {# style.cssを読み込む #}
+    <link rel="stylesheet" href="{% static 'polls/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'polls/css/style.css' %}" type="text/css">
+</head>
+
+<body class="body" style="padding-top: 3.5rem">
+
+{# ナビゲーションバー #}
+{% block navi %}
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <a class="navbar-brand" href="{% url 'index' %}">
+            <img src="{% static 'polls/image/logo_white.png' %}" width="100" height="30" class="d-inline-block align-top">
+            <img src="{% static 'polls/image/icon.png' %}" width="30" height="30" class="d-inline-block align-top">
+        </a>
+    </nav>
+{% endblock %}
+
+
+{# メインコンテンツ #}
+{% block content %}{% endblock %}
+
+
+<div class="footer">
+    <div class="credits">
+        <span class="copyright text-white-50">
+		    © <script>document.write(new Date().getFullYear().toString())</script> Studio Aquatan newgene
+        </span>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,3 @@
+[submodule "kithack2018_newgene_m5stack2/misaki_font"]
+	path = kithack2018_newgene_m5stack2/misaki_font
+	url = https://github.com/Tamakichi/Arduino-misakiUTF16

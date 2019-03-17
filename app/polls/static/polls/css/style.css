@@ -1,0 +1,234 @@
+@charset "UTF-8";
+
+/* color */
+:root {
+    --base-color: #00505d;
+    --accent-color: #35a9b2;
+    --accent-color2: #f5a200;
+    --dark-color: #424040;
+    --text-color: #000;
+}
+
+html {
+    min-height: 100%;
+    position: relative;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: var(--base-color);
+}
+
+.fa {
+    margin-right: 0.5rem;
+}
+
+.jumbotron {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 85vh;
+    min-height: 450px;
+    background: transparent !important;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.jumbotron-container {
+    position: center;
+}
+
+.container-sender-info {
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    padding-right: 20px;
+    margin-right: 20px;
+    box-shadow: 10px 10px 15px -10px;
+    outline: solid 1px gray;
+}
+
+.container-index {
+    display: block;
+    padding: 1.5rem;
+    background-color: var(--accent-color2);
+}
+
+
+.fa-arrow-circle-down {
+    padding: 1rem;
+    margin: 2rem;
+    font-size: 2rem;
+    color: var(--accent-color2);
+}
+
+.msg-textarea {
+    width: 15rem;
+    height: 10rem;
+}
+
+.top-logo {
+    width: 250px;
+    height: 65px;
+}
+
+.top-image {
+    width: 200px;
+    height: 200px;
+}
+
+.button-group {
+    margin: 2rem;
+}
+
+.msg-group {
+    padding: 1rem;
+}
+
+.btn-outline-primary {
+    margin: 0.5rem 1rem 1rem 1rem;
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active,
+.btn-outline-primary:active:focus, .btn-outline-primary:active:hover, .btn-outline-primary:active.focus,
+.btn-outline-primary.active, .btn-outline-primary.active:focus, .btn-outline-primary.active:hover,
+.btn-outline-primary.active.focus,
+.btn-primary:hover, .btn-primary:focus,
+.btn-primary:active, .btn-primary:active:focus, .btn-primary:active:hover, .btn-primary:active.focus,
+.btn-primary.active, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary.active.focus,
+.open > .dropdown-toggle.btn-primary,
+.open > .dropdown-toggle.btn-primary:hover,
+.open > .dropdown-toggle.btn-primary:focus,
+.open > .dropdown-toggle.btn-primary.focus,
+.btn-outline-primary.disabled,
+.btn-outline-primary.disabled:hover, .btn-outline-primary[disabled]:hover, fieldset[disabled].btn-outline-primary:hover,
+.btn-outline-primary.disabled:focus, .btn-outline-primary[disabled]:focus, fieldset[disabled] .btn-outline-primary:focus,
+.btn-outline-primary.disabled.focus, .btn-outline-primary[disabled].focus, fieldset[disabled] .btn-outline-primary.focus,
+.btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled.focus, .btn-primary[disabled].focus, fieldset[disabled] .btn-primary.focus {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--white);
+}
+
+.btn-send {
+    margin-top: 1rem;
+    display: block;
+!important;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    margin-right: 5%;
+    margin-left: 5%;
+    font-size: 3rem;
+}
+
+.th-sender-info {
+    width: 30%;
+}
+
+.td-sender-info {
+    width: 70%;
+}
+
+.map-group {
+    margin-top: 30px;
+    margin-bottom: 100px;
+}
+
+.map-display {
+    height: 800px;
+    width: 1000px;
+    margin-top: 30px;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+}
+
+.main-container {
+    height: inherit;
+}
+
+.table-responsive {
+    padding-top: 1rem;
+    padding-left: 1rem;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+    background-color: var(--base-color);
+    padding: 1rem;
+    text-align: right;
+    margin-top: 20px;
+}
+
+@media (min-width: 300px) {
+    .map-display {
+        height: 230px;
+        width: 230px;
+    }
+
+    .btn-send {
+        font-size: 1rem;
+    }
+
+    .table-responsive {
+        width: 100%;
+    }
+}
+
+@media (min-width: 375px) {
+    .map-display {
+        height: 250px;
+        width: 250px;
+    }
+}
+
+@media (min-width: 425px) {
+    .map-display {
+        height: 300px;
+        width: 300px;
+    }
+}
+
+@media (min-width: 768px) {
+    .map-display {
+        height: 400px;
+        width: 600px;
+    }
+
+    .top-logo {
+        width: 400px;
+        height: 104px;
+    }
+
+    .table-responsive {
+        width: 90%;
+    }
+
+    .th-sender-info {
+        width: 20%;
+    }
+
+    .td-sender-info {
+        width: 80%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .btn-send {
+        font-size: 1.5rem;
+    }
+
+    .top-logo {
+        width: 500px;
+        height: 130px;
+    }
+}

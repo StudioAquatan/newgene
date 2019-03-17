@@ -1,0 +1,40 @@
+{# base.htmlを継承 #}
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{# タイトルを変更 #}
+{% block title %}新規登録{% endblock %}
+
+{# メインコンテンツ #}
+{% block content %}
+    <div class="jumbotron jumbotron-fluid">
+
+        <div class="top-group d-flex flex-column align-items-center">
+            <div class="p-2">
+                <form action="{% url 'new_user' %}" method="post">
+                    {% csrf_token %}
+                    <p>以下の項目を入力してください。</p>
+                    <p>ユーザー名
+                        <input type="text" name="username"></p>
+                    <p>パスワード
+                        <input type="password" name="password"></p>
+                    <p>みつける君のキー
+                        <input type="mobile_key" name="mobile_key"></p>
+                    <p>みつける君を持っている人
+                        <input type="mobile_name" name="mobile_name"></p>
+                    <button class="btn btn-outline-primary" name="btn_sign_up">
+                        <i class="fa fa-user-edit" aria-hidden="true"></i>
+                        登録
+                    </button>
+                </form>
+
+                {% if error_message %}
+                    <p style="color: red;">
+                        <strong>{{ error_message }}</strong>
+                    </p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
