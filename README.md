@@ -20,10 +20,13 @@
 
 ## Setup
 
-- M5Stack
+- 上記の環境を構築してDjangoでアプリを作成してください。
+- M5Stackにm5stack_program.inoをコンパイルしてください。
 
 ## Author
-
-- lanqiu
-- Masapyon
-- NishiYuki
+- lanqiu  
+Web全体のデザインを担当
+- NishiYuki  
+Arduinoプログラムの担当
+- Masapyon（大浦雅也）  
+DB、システム設計（Python）
