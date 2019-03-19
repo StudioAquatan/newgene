@@ -9,6 +9,6 @@ __pycache__/
 .DS_Store
 
 .vscode/
-kithack2018_newgene_m5stack2/private.h
+m5stack_program/private.h
 
 app/app/settings.py
